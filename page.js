@@ -1,20 +1,7 @@
-import Link from "next/link";
-
-export const metadata = {
-  title: 'services'
+export default function ComponentPage() {
+  return (
+    <div>
+       Component Page
+    </div>
+  )
 }
-
-export default function Services() {
-    return (
-        <>
-            <h1>Service page</h1>
-            <p>
-                <Link href='/services/web-dev'>Web Development</Link>
-            </p>
-            <p>
-                <Link href='/services/SEO'>SEO</Link>
-            </p>
-        </>
-    );
-}
-
