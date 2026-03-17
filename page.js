@@ -1,7 +1,8 @@
-export default function ComponentPage() {
-  return (
-    <div>
-       Component Page
-    </div>
-  )
+
+function Blog1() {
+    return (
+        <div>page</div>
+    )
 }
+
+export default Blog1
