@@ -1,58 +1,32 @@
-import Link from "next/link";
+"use client";
 
-export const dynamicParams = true;
-export const revalidate = 5;
+import React, { useEffect, useState } from "react";
 
-/*export async function generateStaticParams() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-    const data = await response.json()
-    console.log(data);
-    return data.map(({ id }) => ({blogID: `${id}`}));
-    /*return [
-        {blogID: '1'},
-        {blogID: '2'},
-        {blogID: '3'},
-        {blogID: '4'},
-        {blogID: '5'},
-    ]//
-}*/
+const Posts = () => {
+  const [posts, setPosts] = useState([]);
 
-const Blog = async ({ params }) => {
-  const { blogID } = await params;
-  console.log("blogID: ", blogID);
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
+      const data = await response.json();
+     setPosts(data);
+    }
+    fetchPosts();
+  }, []);
+
   return (
     <>
-      <nav>
-        <ul className="navbar">
-          <li>
-            <Link href="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="nav-link">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="nav-link">
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/blogs" className="nav-link active">
-              Blogs
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div>
-        <h1>Welcome to Our Blog {blogID}</h1>
-        <h2>Date:{new Date().toLocaleString()}</h2>
-        <p>This is blog {blogID} page.</p>
+    <h1>Posts</h1>
+    <div className="posts-container">
+      {posts.map(({id, title, body}) => (
+      <div className="post-card" key={id}>
+        <h2>{title}</h2>
+        <p>{body}</p>
       </div>
+      ))}
+    </div>
     </>
   );
 };
 
-export default Blog;
+export default Posts;
