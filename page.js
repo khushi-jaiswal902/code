@@ -1,15 +1,25 @@
-"use client "
-
 import Link from "next/link";
-import Views from "../../../components/Views";
-import Likes from "../../../components/Likes";
-import Comments from "../../../components/Comments";
-import { Suspense } from "react";
-import Loading from "../../../components/Loading";
-import Button from "../../../components/Button";
 
-const Blogs = () => {
-  console.log("Blogs Page");
+export const dynamicParams = true;
+export const revalidate = 5;
+
+/*export async function generateStaticParams() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    const data = await response.json()
+    console.log(data);
+    return data.map(({ id }) => ({blogID: `${id}`}));
+    /*return [
+        {blogID: '1'},
+        {blogID: '2'},
+        {blogID: '3'},
+        {blogID: '4'},
+        {blogID: '5'},
+    ]//
+}*/
+
+const Blog = async ({ params }) => {
+  const { blogID } = await params;
+  console.log("blogID: ", blogID);
   return (
     <>
       <nav>
@@ -37,26 +47,12 @@ const Blogs = () => {
         </ul>
       </nav>
       <div>
-        <h1>Welcome to Our Blog</h1>
-        <Button />
-        {/*<ol className="blog-links">
-          <li>
-            <Link href="/blogs/1">Blog 1</Link>
-          </li>
-          <li>
-            <Link href="/blogs/2">Blog 2</Link>
-          </li>
-          <li>
-            <Link href="/blogs/3">Blog 3</Link>
-          </li>
-        </ol>*/}
-        <br />
-          <Likes />
-          <Comments/>
-          <Views />
+        <h1>Welcome to Our Blog {blogID}</h1>
+        <h2>Date:{new Date().toLocaleString()}</h2>
+        <p>This is blog {blogID} page.</p>
       </div>
     </>
   );
 };
 
-export default Blogs;
+export default Blog;
