@@ -1,17 +1,12 @@
-export const metadata = {
-  title: {
-    template: "%s | Technical Agency",
-    default: "Technical Agency"
-  },
-  description: "Hello World!", 
-}
+import Link from "next/link";
+import "./globals.css";
 
-export default function RootLayout({children}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         {children}
       </body>
     </html>
-  )
+  );
 }
