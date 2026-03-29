@@ -1,25 +1,12 @@
 import Link from "next/link";
-import { cookies } from "next/headers"
 
-//export const dynamic = "force-dynamic"
-export const dynamic = "auto";
-
-/*const Services = async ({ searchParams}) => { */
-const Services = async ({ searchParams }) => {
-  /*const myCookies = await cookies();
-  console.log(myCookies);*/
-  //await searchParams;
-
-
-  /*const search = await searchParams;
-  console.log(search);*/
-  console.log("Running Services Component");
+const Home = () => {
   return (
     <>
       <nav>
         <ul className="navbar">
           <li>
-            <Link href="/" className="nav-link">
+            <Link href="/" className="nav-link active">
               Home
             </Link>
           </li>
@@ -29,23 +16,23 @@ const Services = async ({ searchParams }) => {
             </Link>
           </li>
           <li>
-            <Link href="/services" className="nav-link active">
+            <Link href="/services" className="nav-link">
               Services
+            </Link>
+          </li>
+          <li>
+            <Link href="/blogs" className="nav-link">
+              Blogs
             </Link>
           </li>
         </ul>
       </nav>
       <div>
-        <h1>Our Services</h1>
-        <ul className="services-list">
-          <li>Web Development</li>
-          <li>Mobile App Development</li>
-          <li>Consulting Services</li>
-          <li>Digital Marketing</li>
-        </ul>
+        <h1>Home Page</h1>
+        <p>Welcome to our website!</p>
       </div>
     </>
   );
 };
 
-export default Services;
+export default Home;
