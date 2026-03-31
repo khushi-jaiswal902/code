@@ -1,38 +1,15 @@
-import Link from "next/link";
+import Header from "../../../vite-project/src/components/Header";
 
-const Home = () => {
+const About = () => {
   return (
     <>
-      <nav>
-        <ul className="navbar">
-          <li>
-            <Link href="/" className="nav-link active">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="nav-link">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="nav-link">
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/blogs" className="nav-link">
-              Blogs
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <div>
-        <h1>Home Page</h1>
-        <p>Welcome to our website!</p>
+        <h1>About Us</h1>
+        <p>We are a company dedicated to providing quality services.</p>
       </div>
     </>
   );
 };
 
-export default Home;
+export default About;
