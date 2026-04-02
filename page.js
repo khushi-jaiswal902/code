@@ -1,28 +1,25 @@
-import Header from "../../../vite-project/src/components/Header";
-import ServiceItem from "../../../vite-project/src/components/ServiceItem";
-import ServiceList from "../../../vite-project/src/components/ServiceList";
+"use client"
 
-const Services = () => {
-  const services = [
-    "Web Development",
-    "Mobile App Development",
-    "Consulting Services",
-    "Digital Marketing",
-  ];
+import { useState } from "react";
 
+const About = () => {
+  const [fruits, setFruits] = useState(["Mango", "Apple"]);
   return (
-    <>
-      <Header />
-      <div>
-        <h1>Our Services</h1>
-        <ServiceList>
-          {services.map((service) => (
-            <ServiceItem key={service} serviceName={service} />
-          ))}
-        </ServiceList>
-      </div>
-    </>
+    <div>
+      <h1>About Us</h1>
+      <p>We are a company dedicated to providing quality services.</p>
+      <button onClick={() => {
+        /*const randomNumber = Math.random();
+        if(randomNumber > 0.5) {
+         throw new Error("Error occurred");
+        }*/
+       console.log(object);
+      }}>Click Me</button>
+      {fruits.map((fruit) => (
+        <p key={fruit}>{fruit}</p>
+      ))}
+    </div>
   );
 };
 
-export default Services;
+export default About;
